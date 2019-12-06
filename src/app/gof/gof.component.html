@@ -1,0 +1,15 @@
+<div>
+  <div 
+    *ngFor="let row of rows" 
+    class="row">
+    <div 
+      *ngFor="let column of columns" 
+      class="cell" 
+      (click)="clicked(column, row)"
+      [style.left]="column + 'px'" 
+      [style.background-color]="data[row][column] ? '#00ff00' : '#ff0000'">
+    </div>
+  </div>
+</div>
+
+<app-control-bar></app-control-bar>
