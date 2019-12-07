@@ -8,6 +8,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { GofComponent } from './gof/gof.component';
 import { ControlBarComponent } from './control-bar/control-bar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ControlBarComponent } from './control-bar/control-bar.component';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: GofComponent },
-    ])
+    ]),
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,
