@@ -24,4 +24,50 @@ export class GofComponent implements OnInit {
     this.data[y][x] = !this.data[y][x];
   }
 
+  next_state(x: number, y: number) {
+    var cnt = 0;
+    if (y > 0) {
+      cnt += this.data[y - 1][x] ? 1 : 0;
+    }
+    if (y < this.height - 1) {
+      cnt += this.data[y + 1][x] ? 1 : 0;
+    }
+    if (x > 0) {
+      cnt += this.data[y][x - 1] ? 1 : 0;
+      if (y > 0) {
+        cnt += this.data[y - 1][x - 1] ? 1 : 0;
+      }
+      if (y < this.height - 1) {
+        cnt += this.data[y + 1][x - 1] ? 1 : 0;
+      }
+    }
+    if (x < this.width - 1) {
+      cnt += this.data[y][x + 1] ? 1 : 0;
+      if (y > 0) {
+        cnt += this.data[y - 1][x + 1] ? 1 : 0;
+      }
+      if (y < this.height - 1) {
+        cnt += this.data[y + 1][x + 1] ? 1 : 0;
+      }
+    }
+
+    if (this.data[y][x]) {
+      return cnt == 2 || cnt == 3;
+    } else {
+      return cnt == 3;
+    }
+  }
+
+  next() {
+    let new_data = Array(this.height).fill(0).map((x,i)=>Array(this.width));
+    
+    for (var y = 0; y < this.height; y++) {
+      for (var x = 0; x < this.width; x++) {
+        new_data[y][x] = this.next_state(x, y);
+      }
+    }
+    
+    this.data = new_data;
+  }
+
 }

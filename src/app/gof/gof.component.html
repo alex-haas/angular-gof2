@@ -8,11 +8,11 @@
           *ngFor="let column of columns" 
           class="cell" 
           (click)="clicked(column, row)"
-          [style.left]="column + 'px'" 
           [style.background-color]="data[row][column] ? '#ff1493' : '#4b0082'">
         </div>
       </div>
     </div>
   </mat-card-content>
+  <button mat-raised-button color="primary" (click)="next()">Next</button>
 </mat-card>
 
